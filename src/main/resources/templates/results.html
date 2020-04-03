@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>View All Borrowers</title>
+</head>
+<body>
+	<form>
+		<table>
+			<tr th:each="currentBorrower : ${borrower}">
+			<td th:text="${currentBorrower.id}" />
+			<td th:text="${currentBorrower.name}" />
+			<td th:text="${currentBorrower.phone}" />
+			<td th:text="${currentBorrower.address.street}" />
+			<td th:text="${currentBorrower.address.city}" />			
+			<td th:text="${currentBorrower.address.state}" />
+			<!-- <td th:text="${currentBorrower.book.bookIsbn}" />
+			<td th:text="${currentBorrower.book.bookName}" />
+			<td th:text="${currentBorrower.book.bookAuthor}" /> -->
+			<td><a th:href="@{/edit/{id}(id=${currentBorrower.id})}">Edit</a></td>
+			<td><a th:href="@{/delete/{id}(id=${currentBorrower.id})}">Delete</a></td>
+			</tr>		
+		</table>
+	</form>
+	<a href="../inputBorrower">Add a new Borrower</a>
+
+</body>
+</html>
